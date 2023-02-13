@@ -30,8 +30,7 @@ public class ViewProfileServlet extends HttpServlet {
         // validate input
         boolean inputHasErrors = username.isEmpty()
                 || email.isEmpty()
-//                || password.isEmpty()
-                || (! password.equals(passwordConfirmation));
+                || (!password.equals(passwordConfirmation));
 
         if (inputHasErrors) {
             response.sendRedirect("/profile");
@@ -53,20 +52,6 @@ public class ViewProfileServlet extends HttpServlet {
         DaoFactory.getUsersDao().edit(updated);
         request.getSession().setAttribute("user", updated);
         response.sendRedirect("/login");
-
-        //        User user = (User) request.getSession().getAttribute("user");
-//        Ad ad = new Ad(
-//                user.getId(),
-//                request.getParameter("title"),
-//                request.getParameter("description")
-//        );
-//        DaoFactory.getUsersDao().edit(user);
-//        response.sendRedirect("/profile");
     }
-
-//    UPDATE users
-//    SET username = 'Samuel', email = 'Clemens@gmail.com', password = 'password'
-//    WHERE id = 4;
-
 
 }
