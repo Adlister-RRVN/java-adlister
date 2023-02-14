@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -71,5 +72,19 @@ public class MySQLAdsDao implements Ads {
             ads.add(extractAd(rs));
         }
         return ads;
+    }
+
+    public List<Ad> searchAds(String searchTerm) {
+        try {
+            String searchTitle = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            String searchTermWithWildcards = "%" + searchTerm + "%";
+            PreparedStatement stmt = connection.prepareStatement(searchTitle);
+            stmt.setString(1, searchTermWithWildcards);
+            stmt.setString(2, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding matching ad", e);
+        }
     }
 }
