@@ -1,0 +1,21 @@
+.Navbar__ {
+  display: flex;
+  width: 100vw;
+}
+
+.Navbar__right {
+  display: flex;
+  justify-content: flex-start;
+  align-content: start;
+}
+.Navbar__right .Navbar__right-link {
+  display: flex;
+  justify-content: flex-start;
+  align-content: start;
+}
+
+.container h1 {
+  color: blue !important;
+}
+
+/*# sourceMappingURL=style.css.map */
