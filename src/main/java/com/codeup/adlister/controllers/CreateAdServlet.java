@@ -22,6 +22,15 @@ public class CreateAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
+        String sedan = request.getParameter("sedan");
+        String grand = request.getParameter("grand");
+        String crossover = request.getParameter("crossover");
+        String sav = request.getParameter("sav");
+        String suv = request.getParameter("suv");
+        String compact = request.getParameter("compact");
+        String convertible = request.getParameter("convertible");
+        String foreign = request.getParameter("foreign");
+        String domestic = request.getParameter("domestic");
 
         if (title == null || title.isEmpty()) {
             request.setAttribute("titleError", "Title is required");
@@ -34,6 +43,34 @@ public class CreateAdServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(user.getId(), title, description);
         DaoFactory.getAdsDao().insert(ad);
+        Long adId = DaoFactory.getAdsDao().findAds(description);
+        if (sedan != null){
+            DaoFactory.getCategoriesDao().assign(adId, 1);
+        }
+        if (grand != null){
+            DaoFactory.getCategoriesDao().assign(adId, 2);
+        }
+        if (crossover != null){
+            DaoFactory.getCategoriesDao().assign(adId, 3);
+        }
+        if (sav != null){
+            DaoFactory.getCategoriesDao().assign(adId, 4);
+        }
+        if (suv != null){
+            DaoFactory.getCategoriesDao().assign(adId, 5);
+        }
+        if (compact != null){
+            DaoFactory.getCategoriesDao().assign(adId, 6);
+        }
+        if (convertible != null){
+            DaoFactory.getCategoriesDao().assign(adId, 7);
+        }
+        if (foreign != null){
+            DaoFactory.getCategoriesDao().assign(adId, 8);
+        }
+        if (domestic != null){
+            DaoFactory.getCategoriesDao().assign(adId, 9);
+        }
         response.sendRedirect("/ads");
     }
 }

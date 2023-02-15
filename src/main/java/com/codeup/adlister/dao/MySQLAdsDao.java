@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.*;
 import com.mysql.cj.jdbc.Driver;
 
@@ -78,6 +79,33 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(2, searchTermWithWildcards);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding matching ad", e);
+        }
+    }
+
+
+//                String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
+//            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+//            stmt.setLong(1, ad.getUserId());
+//            stmt.setString(2, ad.getTitle());
+//            stmt.setString(3, ad.getDescription());
+//            stmt.executeUpdate();
+//            ResultSet rs = stmt.getGeneratedKeys();
+//            rs.next();
+//            return rs.getLong(1);
+
+
+    public Long findAds(String searchTerm) {
+        try {
+            String searchTitle = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            String searchTermWithWildcards = "%" + searchTerm + "%";
+            PreparedStatement stmt = connection.prepareStatement(searchTitle, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, searchTermWithWildcards);
+            stmt.setString(2, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error finding matching ad", e);
         }
