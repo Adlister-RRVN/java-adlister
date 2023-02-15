@@ -8,8 +8,8 @@
     <ul class="Navbar__right">
       <c:choose>
         <c:when test="${empty sessionScope.user.username}">
-          <li><a class="Navbar__right-link" href="/login">Login</a></li>
-          <li><a class="Navbar__right-link" href="/register">Sign up!</a></li>
+          <li><a class="Navbar__right-link login" href="/login">Login</a></li>
+          <li><a class="Navbar__right-link register" href="/register">Sign up!</a></li>
         </c:when>
         <c:otherwise>
           <li><a class="Navbar__right-link" href="/logout">Logout</a></li>
