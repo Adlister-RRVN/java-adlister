@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.dao.EmailValidator;
+import com.codeup.adlister.dao.PasswordValidator;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -28,12 +29,19 @@ public class RegisterServlet extends HttpServlet {
                 || email.isEmpty()
                 || password.isEmpty()
                 || (!password.equals(passwordConfirmation))
-                || !EmailValidator.isValidEmail(email); // validate email
+                || !EmailValidator.isValidEmail(email) // validate email
+                || !PasswordValidator.isValidPassword(password); // validates password
+
+        // Set error messages based on validation results
+        if (email.isEmpty() || !EmailValidator.isValidEmail(email)) {
+            request.setAttribute("emailError", "Please enter a valid email address.");
+        }
+
+        if (password.isEmpty() || !PasswordValidator.isValidPassword(password)) {
+            request.setAttribute("passwordError", "Please enter a valid password with at least 12 characters, including 2 uppercase, 2 lowercase, and 2 special characters.");
+        }
 
         if (inputHasErrors) {
-            // Set the error message as an attribute on the request object
-            request.setAttribute("errorMessage", "Invalid email address");
-
             // Forward the request to the registration page
             request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
             return;
