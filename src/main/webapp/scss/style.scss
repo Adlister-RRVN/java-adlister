@@ -62,6 +62,7 @@
 
       .Navbar__profile-icon {
         @include flexbox(flex, row, center, center, 0);
+
         svg {
           height: 1.75em;
           width: 1.75em;
@@ -73,15 +74,16 @@
 
 .form-control {
   color: rgba(255 255 255 / 0.75);
-  background: #334;
+  background: #031b34;
 
   &:hover {
     box-shadow: 0 0 0.5em white;
   }
+
   &:focus,
   &:active {
     color: white;
-    background: #334;
+    background: #031b34;
     box-shadow: 0 0 0.75em white;
   }
 }
@@ -120,7 +122,7 @@
   }
 
   .col-md-6 {
-    background:linear-gradient(141deg, rgba(3, 27, 52, 1) 0%, rgba(0, 33, 100, 1) 100%);
+    background: linear-gradient(141deg, rgba(3, 27, 52, 1) 0%, rgba(0, 33, 100, 1) 100%);
     border-radius: 6px;
     padding: 1em;
     margin-top: 2.5em;
@@ -128,11 +130,44 @@
     &:hover {
       box-shadow: 0 0 0.5em white;
     }
+
     h2 {
       color: white;
     }
+
     p {
       color: white;
+    }
+  }
+
+  form {
+    .btn {
+      margin-top: 1em;
+    }
+  }
+
+  .buttons-container {
+    @include flexbox(flex, row, flex-start, center, nowrap);
+
+    form {
+      button {
+        color: white;
+        background: transparent;
+        border: 1px solid white;
+        margin-right: 1em;
+
+        &:hover {
+          color: inherit;
+          background: white;
+          box-shadow: 0 0 0.5em white;
+        }
+
+        &:active {
+          color: white;
+          background: orangered;
+          box-shadow: 0 0 1em orangered;
+        }
+      }
     }
   }
 }
@@ -141,6 +176,7 @@
   label {
     margin-bottom: 0.25em;
   }
+
 
   .alert {
     font-family: "Manrope", sans-serif;

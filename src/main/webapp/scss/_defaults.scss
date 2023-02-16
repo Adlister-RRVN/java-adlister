@@ -36,4 +36,10 @@ a {
     color: inherit;
     background: white;
   }
+
+  &:active {
+    color: white;
+    background: orangered;
+    outline: none !important;
+  }
 }

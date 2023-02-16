@@ -33,6 +33,11 @@ a {
   color: inherit;
   background: white;
 }
+.btn:active {
+  color: white;
+  background: orangered;
+  outline: none !important;
+}
 
 .Navbar__ {
   height: 3em;
@@ -105,14 +110,14 @@ a {
 
 .form-control {
   color: rgba(255, 255, 255, 0.75);
-  background: #334;
+  background: #031b34;
 }
 .form-control:hover {
   box-shadow: 0 0 0.5em white;
 }
 .form-control:focus, .form-control:active {
   color: white;
-  background: #334;
+  background: #031b34;
   box-shadow: 0 0 0.75em white;
 }
 
@@ -159,6 +164,32 @@ a {
 }
 .container .col-md-6 p {
   color: white;
+}
+.container form .btn {
+  margin-top: 1em;
+}
+.container .buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.container .buttons-container form button {
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+  margin-right: 1em;
+}
+.container .buttons-container form button:hover {
+  color: inherit;
+  background: white;
+  box-shadow: 0 0 0.5em white;
+}
+.container .buttons-container form button:active {
+  color: white;
+  background: orangered;
+  box-shadow: 0 0 1em orangered;
 }
 
 .form-group label {

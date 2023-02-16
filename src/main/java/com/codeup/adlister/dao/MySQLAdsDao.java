@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.*;
 import com.mysql.cj.jdbc.Driver;
 
@@ -14,9 +15,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -54,10 +55,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
@@ -71,13 +72,33 @@ public class MySQLAdsDao implements Ads {
 
     public List<Ad> searchAds(String searchTerm) {
         try {
-            String searchTitle = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            String searchTitle = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? OR id IN (SELECT ad_id FROM ads_categories WHERE category_id = (SELECT id FROM categories WHERE name LIKE ?))";
             String searchTermWithWildcards = "%" + searchTerm + "%";
             PreparedStatement stmt = connection.prepareStatement(searchTitle);
             stmt.setString(1, searchTermWithWildcards);
             stmt.setString(2, searchTermWithWildcards);
+            stmt.setString(3, searchTermWithWildcards);
             ResultSet rs = stmt.executeQuery();
+//            if (!rs.isBeforeFirst() ) {
+//                return searchCategories(searchTerm);
+//            }
             return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding matching ad", e);
+        }
+    }
+
+
+    public Long findAds(String searchTerm) {
+        try {
+            String searchTitle = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
+            String searchTermWithWildcards = "%" + searchTerm + "%";
+            PreparedStatement stmt = connection.prepareStatement(searchTitle, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, searchTermWithWildcards);
+            stmt.setString(2, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error finding matching ad", e);
         }
