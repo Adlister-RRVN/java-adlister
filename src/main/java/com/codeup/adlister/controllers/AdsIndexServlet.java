@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -26,8 +27,10 @@ public class AdsIndexServlet extends HttpServlet {
         String loadall = request.getParameter("loadall");
         String viewId = request.getParameter("viewId");
         User userAd = DaoFactory.getUsersDao().findByUserID(viewId);
+        List<Category> categoryAd = DaoFactory.getCategoriesDao().findByCategoryID(viewId);
 
         request.getSession().setAttribute("userAd", userAd);
+        request.getSession().setAttribute("categoryAd", categoryAd);
 
         if (viewId != null){
             request.getSession().setAttribute("viewId", viewId);

@@ -13,6 +13,7 @@ public interface Ads {
 
     List<Ad> searchAds(String searchTerm);
 
+    List<Ad> findAdCategories(String searchTerm);
 
     Long findAds(String searchTerm);
 

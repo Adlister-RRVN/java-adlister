@@ -1,6 +1,8 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.controllers.Config;
+import com.codeup.adlister.models.Category;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -30,34 +32,32 @@ public class MySQLCategoriesDao implements Categories {
         }
     }
 
-//
-//    public List<Ad> searchCategory() {
-//        PreparedStatement stmt = null;
-//        try {
-//            stmt = connection.prepareStatement("SELECT * FROM ads WHERE ad_id = ?");
-//            ResultSet rs = stmt.executeQuery();
-//            return createAdsFromResults(rs);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error retrieving all ads.", e);
-//        }
-//    }
-//
-//    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
-//        List<Ad> ads = new ArrayList<>();
-//        while (rs.next()) {
-//            ads.add(extractAd(rs));
-//        }
-//        return ads;
-//    }
-//
-//    private Ad extractAd(ResultSet rs) throws SQLException {
-//        return new Ad(
-//                rs.getLong("id"),
-//                rs.getLong("user_id"),
-//                rs.getString("title"),
-//                rs.getString("description")
-//        );
-//    }
+    public List<Category> findByCategoryID(String searchTerm) {
+        try {
+                String searchTitle = "SELECT * FROM categories WHERE id IN (SELECT category_id FROM ads_categories WHERE ad_id = ?)";
+                String searchTermWithWildcards = searchTerm;
+                PreparedStatement stmt = connection.prepareStatement(searchTitle);
+                stmt.setString(1, searchTermWithWildcards);
+                ResultSet rs = stmt.executeQuery();
+                return createCategoriesFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding categories for ad", e);
+        }
+    }
+    private Category extractCategory(ResultSet rs) throws SQLException {
+        return new Category(
+                rs.getLong("id"),
+                rs.getString("name")
+        );
+    }
+
+    public List<Category> createCategoriesFromResults(ResultSet rs) throws SQLException {
+        List<Category> categories = new ArrayList<>();
+        while (rs.next()) {
+            categories.add(extractCategory(rs));
+        }
+        return categories;
+    }
 
 
     public Integer assign(Long adId, Integer categoryId){
@@ -73,6 +73,8 @@ public class MySQLCategoriesDao implements Categories {
     } catch (SQLException e) {
         throw new RuntimeException("Error setting adID and category.", e);
     }
+
+
 
 }
 
