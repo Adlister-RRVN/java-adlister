@@ -48,6 +48,10 @@ input {
   filter: drop-shadow(0.5em 0.5em 0.5em black) !important;
 }
 
+li {
+  color: white;
+}
+
 .Navbar__ {
   height: 3em;
   width: 100vw;
@@ -251,6 +255,9 @@ input {
 }
 .col-md-6 .link-button:hover {
   box-shadow: 0 0 0.25em white;
+}
+.col-md-6 ul li {
+  color: white;
 }
 
 .buttons-container {
