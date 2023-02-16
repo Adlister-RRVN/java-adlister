@@ -1,0 +1,54 @@
+@import "./variables";
+@import "./mixins";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+  @include p0m0;
+  transition: 200ms ease-in-out;
+}
+
+html,
+body {
+  @include p0m0;
+  /* ff 3.6+ */
+  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Manrope", sans-serif;
+  margin-bottom: 3em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  color: white;
+  background: transparent;
+  border: white solid 1px;
+  border-radius: 4px;
+
+  &:hover {
+    color: inherit;
+    background: white;
+  }
+
+  &:active {
+    color: white;
+    background: orangered;
+    outline: none !important;
+  }
+}
+
+label {
+  filter: drop-shadow(0.25em 0.25em 0.25em black);
+}
+
+input {
+  filter: drop-shadow(0.5em 0.5em 0.5em black) !important;
+}

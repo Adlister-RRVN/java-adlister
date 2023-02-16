@@ -1,6 +1,9 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.controllers.Config;
+import com.mysql.cj.jdbc.Driver;
+
+import java.sql.*;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
@@ -9,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLCategoriesDao implements Categories {
+
 
 
     private Connection connection = null;
@@ -25,6 +29,7 @@ public class MySQLCategoriesDao implements Categories {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+
 //
 //    public List<Ad> searchCategory() {
 //        PreparedStatement stmt = null;
@@ -53,6 +58,7 @@ public class MySQLCategoriesDao implements Categories {
 //                rs.getString("description")
 //        );
 //    }
+
 
     public Integer assign(Long adId, Integer categoryId){
         try {

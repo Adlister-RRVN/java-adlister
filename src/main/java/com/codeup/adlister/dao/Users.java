@@ -11,6 +11,5 @@ public interface Users {
 
     User findByUserID(String searchTerm);
     Long insert(User user);
-
     Long edit(User user);
 }

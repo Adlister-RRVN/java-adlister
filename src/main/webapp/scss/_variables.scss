@@ -1,0 +1,47 @@
+$colors: (
+        red: red,
+        blue: blue,
+  // just as an example...
+);
+
+// fonts
+$font-family: ();
+
+// flex box
+$display: (
+        block: block,
+        flex: flex,
+        inline: inline,
+        inline-flex: inline-flex,
+        inline-block: inline-block,
+        none: none,
+);
+
+$flex-direction: (
+        column:column,
+        row: row,
+);
+
+$justify-content: (
+        center: center,
+        flex-start:flex-start,
+        flex-end:flex-end,
+        space-around:space-around,
+        space-between:space-between,
+        space-evenly:space-evenly,
+        stretch:stretch,
+);
+
+$align-items: (
+        center: center,
+        flex-start:flex-start,
+        flex-end:flex-end,
+        space-around:space-around,
+        space-between:space-between,
+        stretch:stretch,
+);
+
+$flex-wrap: (
+        flex-wrap:flex-wrap,
+        nowrap:nowrap,
+);
