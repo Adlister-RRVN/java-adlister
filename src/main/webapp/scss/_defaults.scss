@@ -11,9 +11,7 @@
 html,
 body {
   @include p0m0;
-  /* ff 3.6+ */
   background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%);
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

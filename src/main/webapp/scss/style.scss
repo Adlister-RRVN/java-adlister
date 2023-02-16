@@ -15,12 +15,13 @@
     height: 100%;
 
     .Navbar__header {
-      width: 100%;
+      width: 25%;
       display: flex;
       flex-shrink: 1;
 
       .Navbar__brand {
         @include flexbox(flex, row, flex-start, center, 0);
+        width: 8em;
         font-size: 20px;
         font-weight: normal;
         margin-left: 1em;
@@ -35,6 +36,23 @@
           margin-right: 0.5em;
           height: 1em;
           width: 1em;
+        }
+      }
+    }
+
+    .Navbar__container-links {
+      @include flexbox(flex, row, flex-start, 0, 0);
+      height: 100%;
+      width: 100%;
+
+      ul {
+        @include flexbox(flex, row, flex-start, center, 0);
+        width: 100%;
+        list-style: none;
+
+        li {
+          @include flexbox(flex, row, flex-start, center, 0);
+          width: 20%;
         }
       }
     }
@@ -110,11 +128,11 @@
   h1 {
     font-size: 3em;
     font-weight: 900;
-    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat center;
+    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0.125em 0.125em 0.125em black);
-    margin: 0.5em 0;
+    margin: 1em 0 0 0;
   }
 
   label {
@@ -130,7 +148,7 @@
     height: 3px;
     width: 100%;
     background: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
-    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    filter: drop-shadow(0.5em 0.5em 0.5em black);
     margin-bottom: 0.25rem;
   }
 
@@ -142,24 +160,69 @@
     margin-top: 2.5em;
 
     &:hover {
-      box-shadow: 0 0 0.5em white;
+      box-shadow: 0 0 0.75em white;
     }
 
     h2, p {
       color: white;
     }
 
+    .link-button {
+      color: #031b34;
+      text-shadow: 1px 1px 2px rgba(0 0 0 / 0.5);
+      background-color: white;
+      border: none;
+      border-radius: 10em;
+      padding: 0 0.5em;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 0.25em white;
+      }
+    }
   }
 
-  form {
-    .btn {
-      margin-top: 2em;
-      box-shadow: 0.5em 0.5em 0.5em black !important;
+  .col-md-6 {
+    form {
+      .btn {
+        margin-top: 2em;
+        box-shadow: 0.5em 0.5em 0.5em black !important;
+      }
     }
   }
 
   input {
     box-shadow: 0.5em 0.5em 0.5em black !important;
+  }
+}
+
+.col-md-6 {
+  background: linear-gradient(141deg, rgba(3, 27, 52, 1) 0%, rgba(0, 33, 100, 1) 100%);
+  border-radius: 6px;
+  filter: drop-shadow(0.5em 0.5em 0.5em black);
+  padding: 1em;
+  margin-top: 2.5em;
+
+  &:hover {
+    box-shadow: 0 0 0.75em white;
+  }
+
+  h2, p {
+    color: white;
+  }
+
+  .link-button {
+    color: #031b34;
+    text-shadow: 1px 1px 2px rgba(0 0 0 / 0.5);
+    background-color: white;
+    border: none;
+    border-radius: 10em;
+    padding: 0 0.5em;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 0.25em white;
+    }
   }
 }
 
@@ -214,6 +277,11 @@
     -webkit-text-fill-color: transparent;
     font-size: 2em;
     font-weight: 900;
+  }
+
+  .btn {
+    background: #031b34;
+    margin-top: 2em;
   }
 }
 

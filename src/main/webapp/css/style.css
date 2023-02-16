@@ -9,7 +9,7 @@
 html,
 body {
   padding: 0;
-  margin: 0; /* ff 3.6+ */
+  margin: 0;
   background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%);
   background-size: cover;
   background-position: center;
@@ -63,7 +63,7 @@ input {
   height: 100%;
 }
 .Navbar__ .Navbar__container .Navbar__header {
-  width: 100%;
+  width: 25%;
   display: flex;
   flex-shrink: 1;
 }
@@ -72,6 +72,7 @@ input {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width: 8em;
   font-size: 20px;
   font-weight: normal;
   margin-left: 1em;
@@ -88,6 +89,28 @@ input {
   margin-right: 0.5em;
   height: 1em;
   width: 1em;
+}
+.Navbar__ .Navbar__container .Navbar__container-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+.Navbar__ .Navbar__container .Navbar__container-links ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+}
+.Navbar__ .Navbar__container .Navbar__container-links ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 20%;
 }
 .Navbar__ .Navbar__right {
   display: flex;
@@ -150,11 +173,11 @@ input {
 .container h1 {
   font-size: 3em;
   font-weight: 900;
-  background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat center;
+  background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0.125em 0.125em 0.125em black);
-  margin: 0.5em 0;
+  margin: 1em 0 0 0;
 }
 .container label {
   background: #81afdd no-repeat center;
@@ -168,7 +191,7 @@ input {
   height: 3px;
   width: 100%;
   background: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0.5em 0.5em 0.5em black);
   margin-bottom: 0.25rem;
 }
 .container .col-md-6 {
@@ -179,17 +202,55 @@ input {
   margin-top: 2.5em;
 }
 .container .col-md-6:hover {
-  box-shadow: 0 0 0.5em white;
+  box-shadow: 0 0 0.75em white;
 }
 .container .col-md-6 h2, .container .col-md-6 p {
   color: white;
 }
-.container form .btn {
+.container .col-md-6 .link-button {
+  color: #031b34;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border: none;
+  border-radius: 10em;
+  padding: 0 0.5em;
+  cursor: pointer;
+}
+.container .col-md-6 .link-button:hover {
+  box-shadow: 0 0 0.25em white;
+}
+.container .col-md-6 form .btn {
   margin-top: 2em;
   box-shadow: 0.5em 0.5em 0.5em black !important;
 }
 .container input {
   box-shadow: 0.5em 0.5em 0.5em black !important;
+}
+
+.col-md-6 {
+  background: linear-gradient(141deg, rgb(3, 27, 52) 0%, rgb(0, 33, 100) 100%);
+  border-radius: 6px;
+  filter: drop-shadow(0.5em 0.5em 0.5em black);
+  padding: 1em;
+  margin-top: 2.5em;
+}
+.col-md-6:hover {
+  box-shadow: 0 0 0.75em white;
+}
+.col-md-6 h2, .col-md-6 p {
+  color: white;
+}
+.col-md-6 .link-button {
+  color: #031b34;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border: none;
+  border-radius: 10em;
+  padding: 0 0.5em;
+  cursor: pointer;
+}
+.col-md-6 .link-button:hover {
+  box-shadow: 0 0 0.25em white;
 }
 
 .buttons-container {
@@ -237,6 +298,10 @@ input {
   -webkit-text-fill-color: transparent;
   font-size: 2em;
   font-weight: 900;
+}
+.container-ads .btn {
+  background: #031b34;
+  margin-top: 2em;
 }
 
 .btn-block {
