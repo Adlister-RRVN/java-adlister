@@ -88,48 +88,6 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    public List<Ad> searchCategories(String searchTerm) {
-        try {
-            String searchTitle = "SELECT * FROM ads WHERE id IN (SELECT ad_id FROM ads_categories WHERE category_id = (SELECT id FROM categories WHERE name LIKE ?))";
-            String searchTermWithWildcards = "%" + searchTerm + "%";
-            PreparedStatement stmt = connection.prepareStatement(searchTitle);
-            stmt.setString(1, searchTermWithWildcards);
-//            stmt.setString(2, searchTermWithWildcards);
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding matching category", e);
-        }
-    }
-
-// Searchterm = name (category)
-// name to cat_id
-// cat id to ad id
-// Select * FROM ads WHERE id = (SELECT id FROM categories WHERE name LIKE ?(SEARCHED CAT))
-// Ad's that matched  - come from ads with the ID equal to
-
-
-
-//    SELECT first_name, last_name, birth_date
-//    FROM employees
-//    WHERE emp_no IN (
-//            SELECT emp_no
-//    FROM dept_manager
-//    )
-//    LIMIT 10;
-
-
-
-//                String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
-//            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-//            stmt.setLong(1, ad.getUserId());
-//            stmt.setString(2, ad.getTitle());
-//            stmt.setString(3, ad.getDescription());
-//            stmt.executeUpdate();
-//            ResultSet rs = stmt.getGeneratedKeys();
-//            rs.next();
-//            return rs.getLong(1);
-
 
     public Long findAds(String searchTerm) {
         try {
