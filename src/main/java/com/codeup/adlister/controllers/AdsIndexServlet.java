@@ -1,11 +1,13 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
@@ -22,14 +24,24 @@ public class AdsIndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String searchTerm = request.getParameter("search");
         String loadall = request.getParameter("loadall");
+        String viewId = request.getParameter("viewId");
+        User userAd = DaoFactory.getUsersDao().findByUserID(viewId);
 
-        if(loadall != null){
-            request.getSession().setAttribute("searchTerm", null);
+        request.getSession().setAttribute("userAd", userAd);
+
+        if (viewId != null){
+            request.getSession().setAttribute("viewId", viewId);
+            response.sendRedirect("/ads/view");
         }
+        else {
 
+            if (loadall != null) {
+                request.getSession().setAttribute("searchTerm", null);
+            }
+            request.getSession().setAttribute("searchTerm", searchTerm);
 
-        request.getSession().setAttribute("searchTerm", searchTerm);
-        response.sendRedirect("/ads");
+            response.sendRedirect("/ads");
+        }
     }
 }
 
