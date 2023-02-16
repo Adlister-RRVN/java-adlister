@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Manrope", sans-serif;
+  margin-bottom: 3em;
 }
 
 a {
@@ -42,4 +43,12 @@ a {
     background: orangered;
     outline: none !important;
   }
+}
+
+label {
+  filter: drop-shadow(0.25em 0.25em 0.25em black);
+}
+
+input {
+  filter: drop-shadow(0.5em 0.5em 0.5em black) !important;
 }

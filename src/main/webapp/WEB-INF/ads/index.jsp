@@ -9,6 +9,10 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
+<div class="container d-flex justify-content-center">
+  <h1>Here are the Ads!</h1>
+</div>
+
 
 <jsp:include page="/WEB-INF/partials/searchAds.jsp"/>
 
@@ -46,6 +50,7 @@
     <c:forEach var="ad" items="${found}">
       <div class="col-md-6">
         <h2>${ad.title}</h2>
+        <div class="hr"></div>
         <p>${ad.description}</p>
       </div>
     </c:forEach>

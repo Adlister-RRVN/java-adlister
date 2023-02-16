@@ -2,15 +2,12 @@
 @import "./variables";
 @import "./mixins";
 
-// navbar section
-
+// Navbar section
 .Navbar__ {
   height: 3em;
   width: 100vw;
   color: white;
-  // background: #334;
-  // border-bottom: 1px solid black;
-  box-shadow: 0 0 1em black;
+  padding: 2rem 6rem;
   user-select: none;
 
   .Navbar__container {
@@ -19,12 +16,19 @@
 
     .Navbar__header {
       width: 100%;
+      display: flex;
+      flex-shrink: 1;
 
       .Navbar__brand {
         @include flexbox(flex, row, flex-start, center, 0);
         font-size: 20px;
         font-weight: normal;
         margin-left: 1em;
+
+        &:hover {
+          color: white;
+          filter: drop-shadow(0 0 0.5em white);
+        }
 
         svg {
           @include flexbox(flex, row, flex-start, center, 0);
@@ -48,6 +52,16 @@
       border: 1px solid white;
       border-radius: 4px;
       padding: 0.25em 0.5em;
+
+      &:hover {
+        box-shadow: 0 0 0.5em white;
+      }
+
+      &:active {
+        color: white !important;
+        background-color: orangered !important;
+        box-shadow: 0 0 0.5em orange;
+      }
     }
 
     li {
@@ -89,23 +103,22 @@
 }
 
 .container {
+  .edit-profile-h1 {
+    margin-top: 2em;
+  }
+
   h1 {
     font-size: 3em;
-    font-weight: normal;
-    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
-    background-position: center;
-    background-repeat: no-repeat;
+    font-weight: 900;
+    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 900;
-    text-shadow: 0 0 0.5em rgba(0 0 0 / 0.5);
+    filter: drop-shadow(0.125em 0.125em 0.125em black);
     margin: 0.5em 0;
   }
 
   label {
-    background: #81afdd;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #81afdd no-repeat center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 0.25em rgba(0 0 0 / 0.5));
@@ -117,13 +130,14 @@
     height: 3px;
     width: 100%;
     background: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     margin-bottom: 0.25rem;
   }
 
   .col-md-6 {
     background: linear-gradient(141deg, rgba(3, 27, 52, 1) 0%, rgba(0, 33, 100, 1) 100%);
     border-radius: 6px;
+    filter: drop-shadow(0.5em 0.5em 0.5em black);
     padding: 1em;
     margin-top: 2.5em;
 
@@ -131,52 +145,55 @@
       box-shadow: 0 0 0.5em white;
     }
 
-    h2 {
+    h2, p {
       color: white;
     }
 
-    p {
-      color: white;
-    }
   }
 
   form {
     .btn {
-      margin-top: 1em;
+      margin-top: 2em;
+      box-shadow: 0.5em 0.5em 0.5em black !important;
     }
   }
 
-  .buttons-container {
-    @include flexbox(flex, row, flex-start, center, nowrap);
+  input {
+    box-shadow: 0.5em 0.5em 0.5em black !important;
+  }
+}
 
-    form {
-      button {
+.buttons-container {
+  @include flexbox(flex, row, flex-start, center, nowrap);
+
+  form {
+    button {
+      color: white;
+      background: transparent;
+      border: 1px solid white;
+      margin-right: 1em;
+
+      &:hover {
+        color: inherit;
+        background: white;
+        box-shadow: 0 0 0.5em white;
+      }
+
+      &:active {
         color: white;
-        background: transparent;
-        border: 1px solid white;
-        margin-right: 1em;
-
-        &:hover {
-          color: inherit;
-          background: white;
-          box-shadow: 0 0 0.5em white;
-        }
-
-        &:active {
-          color: white;
-          background: orangered;
-          box-shadow: 0 0 1em orangered;
-        }
+        background: orangered;
+        box-shadow: 0 0 1em orangered;
       }
     }
   }
 }
 
+
 .form-group {
   label {
+    margin-top: 1em;
     margin-bottom: 0.25em;
   }
-
 
   .alert {
     font-family: "Manrope", sans-serif;
@@ -184,6 +201,24 @@
     background: linear-gradient(270deg, rgba(223, 0, 115, 1) 0%, rgba(255, 0, 0, 1) 100%);
     margin-top: 0.5em;
   }
+}
+
+.container-ads {
+  width: 100vw;
+  //background: #031b34;
+  margin-top: 4em;
+
+  label {
+    background: #81afdd no-repeat center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2em;
+    font-weight: 900;
+  }
+}
+
+.btn-block {
+  filter: drop-shadow(0.5em 0.5em 0.5em black) !important;
 }
 
 @import "./media-queries";
