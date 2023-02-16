@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Edit Profile Information</h1>
+  <h1 class="edit-profile-h1">Edit Profile Information</h1>
   <form action="/profile" method="post">
     <div class="form-group">
       <label for="username">Username</label>
@@ -11,11 +11,11 @@
     </div>
     <div class="form-group">
       <label for="password">New Password</label>
-      <input id="password" name="password" class="form-control" type="password">
+      <input id="password" name="password" class="form-control" type="password" placeholder="New Password">
     </div>
     <div class="form-group">
       <label for="confirm_password">Confirm New Password</label>
-      <input id="confirm_password" name="confirm_password" class="form-control" type="password">
+      <input id="confirm_password" name="confirm_password" class="form-control" type="password" placeholder="Confirm password">
     </div>
     <input type="submit" class="btn btn-primary btn-block">
   </form>
