@@ -79,9 +79,6 @@ public class MySQLAdsDao implements Ads {
             stmt.setString(2, searchTermWithWildcards);
             stmt.setString(3, searchTermWithWildcards);
             ResultSet rs = stmt.executeQuery();
-//            if (!rs.isBeforeFirst() ) {
-//                return searchCategories(searchTerm);
-//            }
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error finding matching ad", e);
@@ -101,6 +98,19 @@ public class MySQLAdsDao implements Ads {
             return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error finding matching ad", e);
+        }
+    }
+
+    public List<Ad> findId(String searchTerm) {
+        try {
+            String searchTitle = "SELECT * FROM ads WHERE id = ?";
+            String searchTermWithWildcards = searchTerm;
+            PreparedStatement stmt = connection.prepareStatement(searchTitle);
+            stmt.setString(1, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding matching ad ID", e);
         }
     }
 }

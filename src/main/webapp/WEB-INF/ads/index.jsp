@@ -22,19 +22,14 @@
     <div class="hr"></div>
 
     <c:forEach var="ad" items="${ads}">
-      <div class="col-md-6">
-        <h2>${ad.title}</h2>
-        <div class="hr"></div>
-        <p>${ad.description}</p>
-        <div class="buttons-container">
-          <form method="post" action="/updateAd">
-            <input type="hidden" name="id" value="${ad.id}"/>
-            <button class="btn" type="submit">Update</button>
-          </form>
-          <form method="post" action="deleteAd">
-            <input type="hidden" name="id" value="${ad.id}"/>
-            <button class="btn" type="submit">Delete</button>
-          </form>
+
+        <div class="col-md-6">
+            <h2><form method="post" action="/ads" class="inline">
+                <input type="hidden" name="viewId" value="${ad.id}">
+                <button type="submit" name="viewId" value="${ad.id}" class="link-button">
+                        ${ad.title}</button>
+            </form></h2>
+            <p>${ad.description}</p>
         </div>
       </div>
     </c:forEach>
@@ -48,11 +43,14 @@
     <h1>Matches with: ${searchTerm}</h1>
 
     <c:forEach var="ad" items="${found}">
-      <div class="col-md-6">
-        <h2>${ad.title}</h2>
-        <div class="hr"></div>
-        <p>${ad.description}</p>
-      </div>
+        <div class="col-md-6">
+                <h2><form method="post" action="/ads" class="inline">
+                    <input type="hidden" name="viewId" value="${ad.id}">
+                    <button type="submit" name="viewId" value="${ad.id}" class="link-button">
+                            ${ad.title}</button>
+                </form></h2>
+            <p>${ad.description}</p>
+        </div>
     </c:forEach>
   </div>
 </c:if>
