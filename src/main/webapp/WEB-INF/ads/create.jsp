@@ -21,7 +21,27 @@
         <%= request.getAttribute("description") != null ? request.getAttribute("description") : "" %>
       </textarea>
         </div>
+        <input type="checkbox" id="sedan" name="sedan" value="1">
+        <label for="sedan">Sedan</label><br>
+        <input type="checkbox" id="grand" name="grand" value="2">
+        <label for="grand">Grand Touring</label><br>
+        <input type="checkbox" id="crossover" name="crossover" value="3">
+        <label for="crossover">Crossover</label><br>
+        <input type="checkbox" id="sav" name="sav" value="4">
+        <label for="sav">SAV</label><br>
+        <input type="checkbox" id="suv" name="suv" value="5">
+        <label for="suv">SUV</label><br>
+        <input type="checkbox" id="compact" name="compact" value="6">
+        <label for="compact">Compact</label><br>
+        <input type="checkbox" id="convertible" name="convertible" value="7">
+        <label for="convertible">Convertible</label><br>
+        <input type="checkbox" id="foreign" name="foreign" value="8">
+        <label for="foreign">Foregin</label><br>
+        <input type="checkbox" id="domestic" name="domestic" value="9">
+        <label for="domestic">Domestic</label><br>
+
         <input type="submit" class="btn btn-block btn-primary">
+
     </form>
 </div>
 </body>
