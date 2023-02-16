@@ -41,7 +41,7 @@
 
 <div class="container">
   <h1>Matches with: ${searchTerm}</h1>
-  <c:forEach var="ad" items="${ads}">
+  <c:forEach var="ad" items="${found}">
   <div class="col-md-6">
     <h2>
       <form method="post" action="/ads">
