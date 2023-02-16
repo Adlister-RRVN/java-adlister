@@ -62,7 +62,7 @@ public class MySQLUsersDao implements Users {
 
 
   public User findByUserID(String searchTerm) {
-    String query = "SELECT * FROM users WHERE id = ? LIMIT 1";
+    String query = "SELECT * FROM users WHERE id = (SELECT user_id FROM ads WHERE id = ?)";
     try {
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setString(1, searchTerm);

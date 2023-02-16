@@ -113,4 +113,20 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error finding matching ad ID", e);
         }
     }
+
+    public List<Ad> findAdCategories(String searchTerm) {
+        try {
+            String searchTitle = "SELECT * FROM ads WHERE id = ?";
+            String searchTermWithWildcards = searchTerm;
+            PreparedStatement stmt = connection.prepareStatement(searchTitle);
+            stmt.setString(1, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding matching ad id", e);
+        }
+    }
+
+
 }
+//(FindAdCategory creates ) List of Ad id =   SELECT category_id FROM ads_categories WHERE ads_id = ?

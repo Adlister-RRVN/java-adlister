@@ -12,6 +12,9 @@ public class ViewAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchTerm = (String) request.getSession().getAttribute("viewId");
         request.setAttribute("ads", DaoFactory.getAdsDao().findId(searchTerm));
+//        request.setAttribute("categoryAd", DaoFactory.getCategoriesDao().findByCategoryID(searchTerm));
+
+
         request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
     }
 

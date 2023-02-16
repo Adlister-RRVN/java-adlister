@@ -15,13 +15,14 @@
 
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-6">
-                <h2>${ad.title}</h2>
-                <p>${ad.description}</p>
-                <p>${ad.id}</p>
-                <p>${ad.userId}</p>
-            </div>
-            <div class="col-md-6">
-                <h2>Ad created by: ${userAd.username}</h2>
+                <h2>Title: ${ad.title}</h2>
+                <p>Description: ${ad.description}</p>
+                <p>Categories<ul>
+            <c:forEach var="category" items="${categoryAd}">
+                <li>${category.name}</li>
+            </c:forEach>
+            </ul></p>
+                <p>Ad created by: ${userAd.username}</p>
                 <p>Email user at: ${userAd.email}</p>
             </div>
         </c:forEach>
