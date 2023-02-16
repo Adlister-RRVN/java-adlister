@@ -1,0 +1,15 @@
+@import "./variables";
+@import "./functions";
+
+@mixin flexbox($dis, $flex-d, $justify, $align, $wrap) {
+  display: mapGetter($display, $dis);
+  flex-direction: mapGetter($flex-direction, $flex-d);
+  justify-content: mapGetter($justify-content, $justify);
+  align-items: mapGetter($align-items, $align);
+  flex-wrap: mapGetter($flex-wrap, $wrap);
+}
+
+@mixin p0m0 {
+  padding: 0;
+  margin: 0;
+}

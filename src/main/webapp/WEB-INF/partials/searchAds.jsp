@@ -1,6 +1,7 @@
 <div class="container">
     <h1>Search Ads</h1>
     <form action="/ads" method="post">
+        <div class="hr"></div>
         <div class="form-group">
             <label for="search">Search</label>
             <input id="search" name="search" class="form-control" type="text">
