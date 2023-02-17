@@ -72,18 +72,18 @@ public class MySQLAdsDao implements Ads {
 
     public List<Ad> searchAds(String searchTerm) {
         try {
-            String searchTitle = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ? OR id IN (SELECT ad_id FROM ads_categories WHERE category_id = (SELECT id FROM categories WHERE name LIKE ?))";
+            String searchTitle = "SELECT DISTINCT * FROM ads WHERE title LIKE ? OR description LIKE ? ";
             String searchTermWithWildcards = "%" + searchTerm + "%";
             PreparedStatement stmt = connection.prepareStatement(searchTitle);
             stmt.setString(1, searchTermWithWildcards);
             stmt.setString(2, searchTermWithWildcards);
-            stmt.setString(3, searchTermWithWildcards);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error finding matching ad", e);
         }
     }
+
 
 
     public Long findAds(String searchTerm) {
@@ -116,8 +116,21 @@ public class MySQLAdsDao implements Ads {
 
     public List<Ad> findAdCategories(String searchTerm) {
         try {
-            String searchTitle = "SELECT * FROM ads WHERE id = ?";
-            String searchTermWithWildcards = searchTerm;
+            String searchTitle = "SELECT * FROM ads WHERE id IN (SELECT ad_id FROM ads_categories WHERE category_id IN (SELECT id FROM categories WHERE name LIKE ?))";
+            String searchTermWithWildcards = "%" +searchTerm + "%";
+            PreparedStatement stmt = connection.prepareStatement(searchTitle);
+            stmt.setString(1, searchTermWithWildcards);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding matching ad id", e);
+        }
+    }
+
+    public List<Ad> searchAdsByUser(String searchTerm) {
+        try {
+            String searchTitle = "SELECT * FROM ads WHERE user_id IN (SELECT id FROM users WHERE username LIKE ?)";
+            String searchTermWithWildcards = "%" +searchTerm + "%";
             PreparedStatement stmt = connection.prepareStatement(searchTitle);
             stmt.setString(1, searchTermWithWildcards);
             ResultSet rs = stmt.executeQuery();
