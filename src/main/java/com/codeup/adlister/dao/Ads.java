@@ -16,11 +16,14 @@ public interface Ads {
     List<Ad> findAdCategories(String searchTerm);
 
     Long findAds(String searchTerm);
-     void delete(long id);
-     void update(String title, String description, long id);
+
+    void delete(long id);
+
+    void update(String title, String description, long id);
 
 
-        List<Ad> findId(String searchTerm);
+    List<Ad> findId(String searchTerm);
+
     List<Ad> searchAdsByUser(String searchTerm);
 
 }

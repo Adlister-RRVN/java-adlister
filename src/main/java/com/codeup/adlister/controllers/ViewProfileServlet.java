@@ -13,42 +13,42 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    if (request.getSession().getAttribute("user") == null) {
-      response.sendRedirect("/login");
-      return;
-    }
-    request.setAttribute("ads", DaoFactory.getAdsDao().all());
-    request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-  }
-
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String username = request.getParameter("username");
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
-    String passwordConfirmation = request.getParameter("confirm_password");
-
-    // validate input
-    boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || (!password.equals(passwordConfirmation));
-
-    if (inputHasErrors) {
-      response.sendRedirect("/profile");
-      return;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
+        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
 
-    User user = (User) request.getSession().getAttribute("user");
-    User updated;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String passwordConfirmation = request.getParameter("confirm_password");
 
-    if (password.isEmpty()) {
-      updated = new User(user.getId(), username, email, user.getPassword());
-    } else {
-      updated = new User(user.getId(), username, email, Password.hash(password));
+        // validate input
+        boolean inputHasErrors = username.isEmpty()
+                || email.isEmpty()
+                || (!password.equals(passwordConfirmation));
+
+        if (inputHasErrors) {
+            response.sendRedirect("/profile");
+            return;
+        }
+
+        User user = (User) request.getSession().getAttribute("user");
+        User updated;
+
+        if (password.isEmpty()) {
+            updated = new User(user.getId(), username, email, user.getPassword());
+        } else {
+            updated = new User(user.getId(), username, email, Password.hash(password));
+        }
+
+        DaoFactory.getUsersDao().edit(updated);
+        request.getSession().setAttribute("user", updated);
+        response.sendRedirect("/login");
     }
-
-    DaoFactory.getUsersDao().edit(updated);
-    request.getSession().setAttribute("user", updated);
-    response.sendRedirect("/login");
-  }
 }
