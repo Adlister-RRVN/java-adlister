@@ -13,3 +13,22 @@
   padding: 0;
   margin: 0;
 }
+
+@mixin heightWidth($h, $w) {
+  height: $h;
+  width: $w;
+}
+
+@mixin btnHover {
+  color: #031b34 !important;
+  background: white !important;
+  box-shadow: 0 0 0.5em white !important;
+  border: 1px solid white !important;
+  outline: none !important;
+}
+
+@mixin btnActive {
+  color: white !important;
+  background: orangered !important;
+  box-shadow: 0 0 0.5em orangered !important;
+}

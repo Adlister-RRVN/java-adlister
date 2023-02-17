@@ -10,7 +10,7 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container d-flex justify-content-center">
-  <h1>Here are the Ads!</h1>
+  <h1 class="all-the-ads">Car listings</h1>
 </div>
 
 <jsp:include page="/WEB-INF/partials/searchAds.jsp"/>
@@ -19,8 +19,8 @@
 <div class="container">
   <h1>Here are all the ads!</h1>
   <div class="hr"></div>
-
-  <c:forEach var="ad" items="${ads}">
+  <div class="container-all-ads">
+    <c:forEach var="ad" items="${ads}">
 
     <div class="col-md-6">
       <h2>
@@ -30,10 +30,12 @@
               ${ad.title}</button>
         </form>
       </h2>
+      <div class="hr"></div>
       <p>${ad.description}</p>
     </div>
   </c:forEach>
   </c:if>
+  </div>
 </div>
 
 

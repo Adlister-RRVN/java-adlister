@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="edit-profile-h1">Edit Profile Information</h1>
+  <div class="hr" id="hr"></div>
   <form action="/profile" method="post">
     <div class="form-group">
       <label for="username">Username</label>

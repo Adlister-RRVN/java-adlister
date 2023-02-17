@@ -4,8 +4,7 @@
 
 // Navbar section
 .Navbar__ {
-  height: 3em;
-  width: 100vw;
+  @include heightWidth(3em, 100vw);
   color: white;
   padding: 2rem 6rem;
   user-select: none;
@@ -15,13 +14,13 @@
     height: 100%;
 
     .Navbar__header {
-      width: 25%;
+      @include heightWidth(auto, 25%);
       display: flex;
       flex-shrink: 1;
 
       .Navbar__brand {
         @include flexbox(flex, row, flex-start, center, 0);
-        width: 8em;
+        @include heightWidth(auto, 8em);
         font-size: 20px;
         font-weight: normal;
         margin-left: 1em;
@@ -33,17 +32,15 @@
 
         svg {
           @include flexbox(flex, row, flex-start, center, 0);
+          @include heightWidth(1em, 1em);
           margin-right: 0.5em;
-          height: 1em;
-          width: 1em;
         }
       }
     }
 
     .Navbar__container-links {
       @include flexbox(flex, row, flex-start, 0, 0);
-      height: 100%;
-      width: 100%;
+      @include heightWidth(100%, 100%);
 
       ul {
         @include flexbox(flex, row, flex-start, center, 0);
@@ -76,9 +73,7 @@
       }
 
       &:active {
-        color: white !important;
-        background-color: orangered !important;
-        box-shadow: 0 0 0.5em orange;
+        @include btnActive;
       }
     }
 
@@ -96,8 +91,7 @@
         @include flexbox(flex, row, center, center, 0);
 
         svg {
-          height: 1.75em;
-          width: 1.75em;
+          @include heightWidth(1.75em, 1.75em);
         }
       }
     }
@@ -121,11 +115,30 @@
 }
 
 .container {
+  .all-the-ads {
+    text-align: center;
+  }
+
+  .h1-welcome,
+  .h1-welcome-user {
+    width: 100%;
+  }
+
+  .here-are-your-ads {
+    width: 50%;
+  }
+
+  .container-all-ads {
+    text-align: center;
+  }
+
   .edit-profile-h1 {
+    width: 100%;
     margin-top: 2em;
   }
 
   h1 {
+    width: 40%;
     font-size: 3em;
     font-weight: 900;
     background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat;
@@ -144,12 +157,21 @@
     font-weight: 900;
   }
 
+  .form-group:last-of-type {
+    margin-bottom: 2em;
+  }
+
   .hr {
-    height: 3px;
-    width: 100%;
+    @include heightWidth(3px, 100%);
     background: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
     filter: drop-shadow(0.5em 0.5em 0.5em black);
+    border-radius: 1em;
     margin-bottom: 0.25rem;
+  }
+
+  #hr {
+    width: 50%;
+    margin-top: 0.5em;
   }
 
   .col-md-6 {
@@ -189,6 +211,10 @@
         box-shadow: 0.5em 0.5em 0.5em black !important;
       }
     }
+
+    .hr {
+      margin: 1.75em 0 1em 0;
+    }
   }
 
   input {
@@ -196,38 +222,9 @@
   }
 }
 
-.col-md-6 {
-  background: linear-gradient(141deg, rgba(3, 27, 52, 1) 0%, rgba(0, 33, 100, 1) 100%);
-  border-radius: 6px;
-  filter: drop-shadow(0.5em 0.5em 0.5em black);
-  padding: 1em;
-  margin-top: 2.5em;
-
-  &:hover {
-    box-shadow: 0 0 0.75em white;
-  }
-
-  h2, p {
+ul {
+  li {
     color: white;
-  }
-
-  .link-button {
-    color: #031b34;
-    text-shadow: 1px 1px 2px rgba(0 0 0 / 0.5);
-    background-color: white;
-    border: none;
-    border-radius: 10em;
-    padding: 0 0.5em;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0 0 0.25em white;
-    }
-  }
-  ul {
-    li {
-      color: white;
-    }
   }
 }
 
@@ -237,20 +234,16 @@
   form {
     button {
       color: white;
-      background: transparent;
+      background: #031b34;
       border: 1px solid white;
       margin-right: 1em;
 
       &:hover {
-        color: inherit;
-        background: white;
-        box-shadow: 0 0 0.5em white;
+        @include btnHover
       }
 
       &:active {
-        color: white;
-        background: orangered;
-        box-shadow: 0 0 1em orangered;
+        @include btnActive;
       }
     }
   }
@@ -284,9 +277,31 @@
     font-weight: 900;
   }
 
-  .btn {
+  .btn-block {
     background: #031b34;
-    margin-top: 2em;
+
+    &:hover {
+      @include btnHover;
+      border: 1px solid white;
+    }
+
+    &:active {
+      @include btnActive;
+    }
+  }
+}
+
+.container-all-ads {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+
+  .col-md-6 {
+    width: 95%;
+
+    h2,p {
+      text-align: start;
+    }
   }
 }
 

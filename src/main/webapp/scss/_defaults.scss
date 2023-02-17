@@ -27,19 +27,18 @@ a {
 
 .btn {
   color: white;
-  background: transparent;
+  background: #031b34;
   border: white solid 1px;
   border-radius: 4px;
 
   &:hover {
     color: inherit;
     background: white;
+    box-shadow: 0 0 0.25em white !important;
   }
 
   &:active {
-    color: white;
-    background: orangered;
-    outline: none !important;
+    @include btnActive;
   }
 }
 
@@ -53,4 +52,9 @@ input {
 
 li {
   color: white;
+}
+
+.form-label {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
