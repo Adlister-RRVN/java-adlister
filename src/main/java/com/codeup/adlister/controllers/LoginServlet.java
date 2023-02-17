@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
+        request.getSession().setAttribute("backUrl", request.getHeader("referer"));
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
@@ -35,7 +36,12 @@ public class LoginServlet extends HttpServlet {
 
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/profile");
+            String backUrl = (String) request.getSession().getAttribute("backUrl");
+            if (backUrl != null) {
+                response.sendRedirect(backUrl);
+            } else {
+                response.sendRedirect("/profile");
+            }
         } else {
             response.sendRedirect("/login");
         }

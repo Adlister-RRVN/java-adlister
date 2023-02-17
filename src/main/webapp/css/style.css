@@ -26,18 +26,19 @@ a {
 
 .btn {
   color: white;
-  background: transparent;
+  background: #031b34;
   border: white solid 1px;
   border-radius: 4px;
 }
 .btn:hover {
   color: inherit;
   background: white;
+  box-shadow: 0 0 0.25em white !important;
 }
 .btn:active {
-  color: white;
-  background: orangered;
-  outline: none !important;
+  color: white !important;
+  background: orangered !important;
+  box-shadow: 0 0 0.5em orangered !important;
 }
 
 label {
@@ -50,6 +51,11 @@ input {
 
 li {
   color: white;
+}
+
+.form-label {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 
 .Navbar__ {
@@ -67,6 +73,7 @@ li {
   height: 100%;
 }
 .Navbar__ .Navbar__container .Navbar__header {
+  height: auto;
   width: 25%;
   display: flex;
   flex-shrink: 1;
@@ -76,6 +83,7 @@ li {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  height: auto;
   width: 8em;
   font-size: 20px;
   font-weight: normal;
@@ -90,9 +98,9 @@ li {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 0.5em;
   height: 1em;
   width: 1em;
+  margin-right: 0.5em;
 }
 .Navbar__ .Navbar__container .Navbar__container-links {
   display: flex;
@@ -137,8 +145,8 @@ li {
 }
 .Navbar__ .Navbar__right .Navbar__right-link:active {
   color: white !important;
-  background-color: orangered !important;
-  box-shadow: 0 0 0.5em orange;
+  background: orangered !important;
+  box-shadow: 0 0 0.5em orangered !important;
 }
 .Navbar__ .Navbar__right li {
   padding: 0.5em;
@@ -171,10 +179,25 @@ li {
   box-shadow: 0 0 0.75em white;
 }
 
+.container .all-the-ads {
+  text-align: center;
+}
+.container .h1-welcome,
+.container .h1-welcome-user {
+  width: 100%;
+}
+.container .here-are-your-ads {
+  width: 50%;
+}
+.container .container-all-ads {
+  text-align: center;
+}
 .container .edit-profile-h1 {
+  width: 100%;
   margin-top: 2em;
 }
 .container h1 {
+  width: 40%;
   font-size: 3em;
   font-weight: 900;
   background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat;
@@ -191,12 +214,20 @@ li {
   font-size: 2em;
   font-weight: 900;
 }
+.container .form-group:last-of-type {
+  margin-bottom: 2em;
+}
 .container .hr {
   height: 3px;
   width: 100%;
   background: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
   filter: drop-shadow(0.5em 0.5em 0.5em black);
+  border-radius: 1em;
   margin-bottom: 0.25rem;
+}
+.container #hr {
+  width: 50%;
+  margin-top: 0.5em;
 }
 .container .col-md-6 {
   background: linear-gradient(141deg, rgb(3, 27, 52) 0%, rgb(0, 33, 100) 100%);
@@ -227,36 +258,14 @@ li {
   margin-top: 2em;
   box-shadow: 0.5em 0.5em 0.5em black !important;
 }
+.container .col-md-6 .hr {
+  margin: 1.75em 0 1em 0;
+}
 .container input {
   box-shadow: 0.5em 0.5em 0.5em black !important;
 }
 
-.col-md-6 {
-  background: linear-gradient(141deg, rgb(3, 27, 52) 0%, rgb(0, 33, 100) 100%);
-  border-radius: 6px;
-  filter: drop-shadow(0.5em 0.5em 0.5em black);
-  padding: 1em;
-  margin-top: 2.5em;
-}
-.col-md-6:hover {
-  box-shadow: 0 0 0.75em white;
-}
-.col-md-6 h2, .col-md-6 p {
-  color: white;
-}
-.col-md-6 .link-button {
-  color: #031b34;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: white;
-  border: none;
-  border-radius: 10em;
-  padding: 0 0.5em;
-  cursor: pointer;
-}
-.col-md-6 .link-button:hover {
-  box-shadow: 0 0 0.25em white;
-}
-.col-md-6 ul li {
+ul li {
   color: white;
 }
 
@@ -269,19 +278,21 @@ li {
 }
 .buttons-container form button {
   color: white;
-  background: transparent;
+  background: #031b34;
   border: 1px solid white;
   margin-right: 1em;
 }
 .buttons-container form button:hover {
-  color: inherit;
-  background: white;
-  box-shadow: 0 0 0.5em white;
+  color: #031b34 !important;
+  background: white !important;
+  box-shadow: 0 0 0.5em white !important;
+  border: 1px solid white !important;
+  outline: none !important;
 }
 .buttons-container form button:active {
-  color: white;
-  background: orangered;
-  box-shadow: 0 0 1em orangered;
+  color: white !important;
+  background: orangered !important;
+  box-shadow: 0 0 0.5em orangered !important;
 }
 
 .form-group label {
@@ -306,9 +317,33 @@ li {
   font-size: 2em;
   font-weight: 900;
 }
-.container-ads .btn {
+.container-ads .btn-block {
   background: #031b34;
-  margin-top: 2em;
+}
+.container-ads .btn-block:hover {
+  color: #031b34 !important;
+  background: white !important;
+  box-shadow: 0 0 0.5em white !important;
+  border: 1px solid white !important;
+  outline: none !important;
+  border: 1px solid white;
+}
+.container-ads .btn-block:active {
+  color: white !important;
+  background: orangered !important;
+  box-shadow: 0 0 0.5em orangered !important;
+}
+
+.container-all-ads {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+.container-all-ads .col-md-6 {
+  width: 95%;
+}
+.container-all-ads .col-md-6 h2, .container-all-ads .col-md-6 p {
+  text-align: start;
 }
 
 .btn-block {
