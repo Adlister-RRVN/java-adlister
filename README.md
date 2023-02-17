@@ -1,9 +1,26 @@
-# Finish Up your Adlister
+Adlister
 
-Follow the instructions and suggestions in [here](https://java.codeup.com/java-iii/finish-the-adlister)
+A Craigslist/Offerup clone built with Java using the MVC pattern and CRUD functionality.
 
-## Final branch
+User Stories
 
-Use this master branch as a base for your future features, this branch already has all the necessary code implemented up to the lesson on passwords including it's solution.
+Visitor
+As a visitor I expect to be able to view all ads without logging in
+As a visitor I expect to be able to search the ads
+As a visitor I expect to be able to register
+Registered User
+As a registered user I expect to be able to log in
+As a registered user I expect to be able to view all ads and search
+As a registered user I expect to be able to create new ads
+As a registered user I expect to be able to view my own ads on my profile
+As a registered user I expect to be able to edit and delete my own ads
+As a registered user I expect to be able to edit and delete my account
 
-You might have to change the default branch in your own fork so you can have the master branch as the the default and merge your contributions into it.
+
+Technology Used
+Languages and Frameworks Used
+Java
+HTML
+CSS
+Bootstrap
+MySQL
