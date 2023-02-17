@@ -1,0 +1,34 @@
+@import "variables";
+@import "functions";
+
+@mixin flexbox($dis, $flex-d, $justify, $align, $wrap) {
+  display: mapGetter($display, $dis);
+  flex-direction: mapGetter($flex-direction, $flex-d);
+  justify-content: mapGetter($justify-content, $justify);
+  align-items: mapGetter($align-items, $align);
+  flex-wrap: mapGetter($flex-wrap, $wrap);
+}
+
+@mixin p0m0 {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin heightWidth($h, $w) {
+  height: $h;
+  width: $w;
+}
+
+@mixin btnHover {
+  color: #031b34 !important;
+  background: white !important;
+  box-shadow: 0 0 0.5em white !important;
+  border: 1px solid white !important;
+  outline: none !important;
+}
+
+@mixin btnActive {
+  color: white !important;
+  background: orangered !important;
+  box-shadow: 0 0 0.5em orangered !important;
+}

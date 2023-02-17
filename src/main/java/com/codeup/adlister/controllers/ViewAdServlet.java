@@ -9,6 +9,7 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.ViewAdServlet", urlPatterns = "/ads/view")
 public class ViewAdServlet extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchTerm = (String) request.getSession().getAttribute("viewId");
         request.setAttribute("ads", DaoFactory.getAdsDao().findId(searchTerm));
@@ -30,5 +31,6 @@ public class ViewAdServlet extends HttpServlet {
         }
 
     }
+
 }
 

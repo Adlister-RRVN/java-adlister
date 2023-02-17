@@ -1,0 +1,94 @@
+.Navbar__ {
+  @include heightWidth(3em, 100vw);
+  color: white;
+  padding: 2rem 6rem;
+  user-select: none;
+
+  .Navbar__container {
+    @include flexbox(flex, row, flex-start, center, 0);
+    height: 100%;
+
+    .Navbar__header {
+      @include heightWidth(auto, 25%);
+      display: flex;
+      flex-shrink: 1;
+
+      .Navbar__brand {
+        @include flexbox(flex, row, flex-start, center, 0);
+        @include heightWidth(auto, 8em);
+        font-size: 20px;
+        font-weight: normal;
+        margin-left: 1em;
+
+        &:hover {
+          color: white;
+          filter: drop-shadow(0 0 0.5em white);
+        }
+
+        svg {
+          @include flexbox(flex, row, flex-start, center, 0);
+          @include heightWidth(1em, 1em);
+          margin-right: 0.5em;
+        }
+      }
+    }
+
+    .Navbar__container-links {
+      @include flexbox(flex, row, flex-start, 0, 0);
+      @include heightWidth(100%, 100%);
+
+      ul {
+        @include flexbox(flex, row, flex-start, center, 0);
+        width: 100%;
+        list-style: none;
+
+        li {
+          @include flexbox(flex, row, flex-start, center, 0);
+          width: 20%;
+        }
+      }
+    }
+  }
+
+  .Navbar__right {
+    @include flexbox(flex, row, flex-end, center, 0);
+    width: 100%;
+    list-style: none;
+    margin: 0 1em 0 0;
+
+    .Navbar__right-link {
+      width: 4em;
+      background: inherit;
+      border: 1px solid white;
+      border-radius: 4px;
+      padding: 0.25em 0.5em;
+
+      &:hover {
+        box-shadow: 0 0 0.5em white;
+      }
+
+      &:active {
+        @include btnActive;
+      }
+    }
+
+    li {
+      padding: 0.5em;
+
+      a:not(.Navbar__profile-icon) {
+        &:hover {
+          background: white;
+          color: black;
+        }
+      }
+
+      .Navbar__profile-icon {
+        @include flexbox(flex, row, center, center, 0);
+
+        svg {
+          @include heightWidth(1.75em, 1.75em);
+        }
+      }
+    }
+  }
+}

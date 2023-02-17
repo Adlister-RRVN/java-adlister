@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./mixins";
+@import "variables";
+@import "mixins";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
@@ -11,11 +11,7 @@
 html,
 body {
   @include p0m0;
-  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%) no-repeat fixed center;
   font-family: "Manrope", sans-serif;
   margin-bottom: 3em;
 }
@@ -27,19 +23,18 @@ a {
 
 .btn {
   color: white;
-  background: transparent;
+  background: #031b34;
   border: white solid 1px;
   border-radius: 4px;
 
   &:hover {
     color: inherit;
     background: white;
+    box-shadow: 0 0 0.25em white !important;
   }
 
   &:active {
-    color: white;
-    background: orangered;
-    outline: none !important;
+    @include btnActive;
   }
 }
 
@@ -53,4 +48,9 @@ input {
 
 li {
   color: white;
+}
+
+.form-label {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
