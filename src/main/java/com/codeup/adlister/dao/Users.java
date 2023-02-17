@@ -10,6 +10,8 @@ public interface Users {
     User findByUsername(String username);
 
     User findByUserID(String searchTerm);
+
     Long insert(User user);
+
     Long edit(User user);
 }

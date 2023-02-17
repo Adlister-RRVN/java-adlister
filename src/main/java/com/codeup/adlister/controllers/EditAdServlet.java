@@ -20,36 +20,15 @@ public class EditAdServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
 
-        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-            long id = Long.parseLong(request.getParameter("id"));
-            String title = request.getParameter("title");
-            String description = request.getParameter("password");
+        long id = Long.parseLong(request.getParameter("id"));
+        String title = request.getParameter("title");
+        String description = request.getParameter("password");
 
 
-            DaoFactory.getAdsDao().update(title,description,id);
-            response.sendRedirect("/ads");
-
-//            if (inputHasErrors) {
-//                response.sendRedirect("/profile");
-//                return;
-//            }
-
-//            User user = (User) request.getSession().getAttribute("user");
-
-            // COMPLETED
-//            if (password.isEmpty()) {
-//                User updated = new User(user.getId(), username, email, user.getPassword());
-//                DaoFactory.getUsersDao().edit(updated);
-//                request.getSession().setAttribute("user", updated);
-//                response.sendRedirect("/login");
-//                return;
-//            }
-
-//            User updated = new User(user.getId(), username, email, Password.hash(password));
-//            DaoFactory.getUsersDao().edit(updated);
-//            request.getSession().setAttribute("user", updated);
-//            response.sendRedirect("/login");
-        }
+        DaoFactory.getAdsDao().update(title, description, id);
+        response.sendRedirect("/ads");
+    }
 }
 

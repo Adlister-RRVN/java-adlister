@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface Categories {
     List<Category> findByCategoryID(String searchTerm);
+
     List<Category> createCategoriesFromResults(ResultSet rs) throws SQLException;
 
     // assigns AdID's to Category ID's in the ads_categories table
