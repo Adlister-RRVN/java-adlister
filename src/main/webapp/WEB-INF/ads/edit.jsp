@@ -14,21 +14,25 @@
   <h1>Edit Ad</h1>
   <div class="hr"></div>
 
-  <form method="post" action="/updateAd">
-    <input type="hidden" name="id" value="${ad.id}"/>
+  <c:forEach var="ad" items="${ads}">
+    <form method="post" action="/ads/edit">
+      <input type="hidden" name="id" value="${ad.id}"/>
 
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" value="${ad.title}"/>
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" placeholder="${ad.title}" value=""/>
 
-    <label for="description">Description:</label>
-    <textarea name="description" id="description">${ad.description}</textarea>
+      <label for="description">Description:</label>
+      <textarea name="description" id="description" placeholder="${ad.description}" value="">${ad.description}</textarea>
 
-    <button type="submit" class="btn">Save Changes</button>
-  </form>
+      <button type="submit" class="btn">Save Changes</button>
+    </form>
+  </c:forEach>
 
-  <c:if test="${not empty error}">
-    <div class="alert alert-danger">${error}</div>
-  </c:if>
+
+
+<%--  <c:if test="${not empty error}">--%>
+<%--    <div class="alert alert-danger">${error}</div>--%>
+<%--  </c:if>--%>
 </div>
 
 </body>
