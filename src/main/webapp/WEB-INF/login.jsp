@@ -9,6 +9,19 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
     <h1>Please Log In</h1>
+    <%
+        // Retrieve the error message attribute from the session, if it exists
+        String errorMessage = (String) request.getSession().getAttribute("errorMessage");
+        if (errorMessage != null) {
+    %>
+    <div class="alert alert-danger" role="alert">
+        <%= errorMessage %>
+    </div>
+    <%
+            // Remove the error message attribute from the session so that it doesn't persist
+            request.getSession().removeAttribute("errorMessage");
+        }
+    %>
     <form action="/login" method="POST">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
