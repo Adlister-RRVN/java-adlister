@@ -84,6 +84,38 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public void delete(long id) {
+        try {
+            String insertQuery = "DELETE FROM ads_categories WHERE ad_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+            insertQuery = "DELETE FROM ads WHERE id = ?";
+            stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad" + id, e);
+        }
+    }
+    public void update(String title, String description, long id) {
+        try {
+            if (title.length() > 0){
+            String insertQuery = "UPDATE ads SET title = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, title);
+            stmt.setLong(2, id);
+            stmt.executeUpdate();}
+            if (description.length() > 0){
+            String insertQuery = "UPDATE ads SET description = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, description);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();}
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad" + id, e);
+        }
+    }
 
 
     public Long findAds(String searchTerm) {

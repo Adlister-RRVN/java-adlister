@@ -25,7 +25,16 @@
             </ul></p>
                 <p>Ad created by: ${userAd.username}</p>
                 <p>Email user at: ${userAd.email}</p>
+                <form method="post" action="/ads/view">
+                    <input type="hidden" name="deleteId" value="${ad.id}">
+                    <button type="submit" name="deleteId" value="${ad.id}" class="link-button">Delete</button>
+                </form>
+                <form method="post" action="/ads/view">
+                    <input type="hidden" name="edit" value="${ad.id}">
+                    <button type="submit" name="edit" value="${ad.id}" class="link-button">Edit</button>
+                </form>
             </div>
+
         </c:forEach>
     </div>
 </body>
