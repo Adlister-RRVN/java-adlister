@@ -139,7 +139,4 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error finding matching ad id", e);
         }
     }
-
-
 }
-//(FindAdCategory creates ) List of Ad id =   SELECT category_id FROM ads_categories WHERE ads_id = ?

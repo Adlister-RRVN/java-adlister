@@ -9,17 +9,14 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.ViewAdServlet", urlPatterns = "/ads/view")
 public class ViewAdServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String searchTerm = (String) request.getSession().getAttribute("viewId");
-        request.setAttribute("ads", DaoFactory.getAdsDao().findId(searchTerm));
-//        request.setAttribute("categoryAd", DaoFactory.getCategoriesDao().findByCategoryID(searchTerm));
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String searchTerm = (String) request.getSession().getAttribute("viewId");
+    request.setAttribute("ads", DaoFactory.getAdsDao().findId(searchTerm));
 
+    request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
+  }
 
-        request.getRequestDispatcher("/WEB-INF/ads/viewAd.jsp").forward(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-// NOT IN USE
-    }
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+  }
 }
 

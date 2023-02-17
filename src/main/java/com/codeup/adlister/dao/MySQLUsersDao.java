@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLUsersDao implements Users {
-  private Connection connection;
+  private final Connection connection;
 
   public MySQLUsersDao(Config config) {
     try {
@@ -25,9 +25,8 @@ public class MySQLUsersDao implements Users {
   }
 
 
-  // NOT IN USE
   public List<User> all(String searchTerm) {
-    PreparedStatement stmt = null;
+    PreparedStatement stmt;
     try {
       stmt = connection.prepareStatement("SELECT * FROM users WHERE id = (SELECT user_id FROM ads WHERE id = ?)");
       System.out.println(searchTerm);
@@ -39,7 +38,6 @@ public class MySQLUsersDao implements Users {
     }
   }
 
-  //    I DON'T THINK IN USE
   private List<User> createUsersFromResults(ResultSet rs) throws SQLException {
     List<User> users = new ArrayList<>();
     while (rs.next()) {
@@ -107,9 +105,6 @@ public class MySQLUsersDao implements Users {
       throw new RuntimeException("Error editing user", e);
     }
   }
-//    UPDATE users
-//    SET username = 'Samuel', email = 'Clemens@gmail.com', password = 'password'
-//    WHERE id = 4;
 
   private User extractUser(ResultSet rs) throws SQLException {
     if (!rs.next()) {

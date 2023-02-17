@@ -10,11 +10,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%) no-repeat fixed center;
   font-family: "Manrope", sans-serif;
   margin-bottom: 3em;
 }
@@ -197,7 +193,7 @@ li {
   margin-top: 2em;
 }
 .container h1 {
-  width: 40%;
+  width: 75%;
   font-size: 3em;
   font-weight: 900;
   background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%) no-repeat;

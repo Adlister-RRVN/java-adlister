@@ -39,3 +39,7 @@ public class PasswordValidator {
     return matcher.matches();
   }
 }
+
+// ============================================================ //
+// * Ignore the yellow triangle. Intellij will break this code. //
+// ============================================================ //

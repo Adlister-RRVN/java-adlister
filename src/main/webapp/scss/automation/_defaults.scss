@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./mixins";
+@import "variables";
+@import "mixins";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
@@ -11,11 +11,7 @@
 html,
 body {
   @include p0m0;
-  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: radial-gradient(circle at 3% 25%, rgb(0, 40, 83) 0%, rgb(4, 12, 24) 100%) no-repeat fixed center;
   font-family: "Manrope", sans-serif;
   margin-bottom: 3em;
 }
